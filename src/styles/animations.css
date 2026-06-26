@@ -1,0 +1,220 @@
+/* ─── Fade-up entrance (page load, ≤500ms) ───────────────────────────── */
+.animate-delay-100 { animation-delay: 100ms; }
+.animate-delay-200 { animation-delay: 200ms; }
+.animate-delay-300 { animation-delay: 300ms; }
+.animate-delay-400 { animation-delay: 400ms; }
+.animate-delay-500 { animation-delay: 500ms; }
+
+/* ─── Hero decorative shapes ─────────────────────────────────────────── */
+.hero-orb-yellow {
+  background: radial-gradient(circle, #FFC801 0%, transparent 70%);
+}
+.hero-orb-teal {
+  background: radial-gradient(circle, #114C5A 0%, transparent 70%);
+}
+.hero-orb-orange {
+  background: radial-gradient(circle, #FF9932 0%, transparent 70%);
+}
+.hero-grid-pattern {
+  background-image:
+    linear-gradient(rgba(209, 232, 226, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(209, 232, 226, 0.12) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+/* ─── Gradient text ───────────────────────────────────────────────────── */
+.text-gradient-yellow {
+  background: linear-gradient(135deg, #FFC801 0%, #FF9932 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Shimmer button effect ───────────────────────────────────────────── */
+.btn-shimmer {
+  background-size: 200% auto;
+  background-image: linear-gradient(
+    115deg,
+    #FFC801 0%,
+    #FF9932 40%,
+    #FFC801 60%,
+    #FF9932 100%
+  );
+}
+.btn-shimmer:hover {
+  animation: shimmer 1.4s linear infinite;
+}
+
+/* ─── Testimonials marquee pause on hover ─────────────────────────────── */
+.marquee-container:hover .marquee-inner {
+  animation-play-state: paused;
+}
+
+/* ─── Bento card hover glow ───────────────────────────────────────────── */
+.bento-card-hover:hover {
+  box-shadow: 0 0 0 2px rgba(17, 76, 90, 0.25), 0 8px 32px rgba(23, 43, 54, 0.12);
+}
+.bento-card-active {
+  box-shadow: 0 0 0 2px #FFC801, 0 12px 40px rgba(23, 43, 54, 0.25);
+}
+
+/* ─── Focus ring ─────────────────────────────────────────────────────── */
+.focus-ring:focus-visible {
+  outline: 2px solid #FFC801;
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+/* ─── Accordion content transition ───────────────────────────────────── */
+.accordion-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 320ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.accordion-content.open {
+  grid-template-rows: 1fr;
+}
+.accordion-inner {
+  overflow: hidden;
+}
+
+/* ─── Pricing card glow (highlighted) ────────────────────────────────── */
+.pricing-glow {
+  box-shadow:
+    0 0 0 1px #FFC801,
+    0 20px 60px rgba(255, 200, 1, 0.15),
+    0 8px 24px rgba(23, 43, 54, 0.3);
+}
+
+/* ─── Nav glassmorphism ───────────────────────────────────────────────── */
+.nav-glass {
+  background: rgba(241, 246, 244, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(217, 232, 226, 0.6);
+  box-shadow: 0 1px 16px rgba(23, 43, 54, 0.06);
+}
+
+/* ─── Dashboard preview gradient overlay ────────────────────────────── */
+.dashboard-fade {
+  background: linear-gradient(to top, #172B36 0%, transparent 100%);
+}
+
+/* ─── Scroll reveal (IntersectionObserver controlled) ───────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 500ms ease-out, transform 500ms ease-out;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── Button: shine sweep on hover ──────────────────────────────────── */
+.btn-shine::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 55%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.18),
+    transparent
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+.btn-shine:hover::after {
+  animation: btnShine 600ms ease-out forwards;
+}
+@keyframes btnShine {
+  to { left: 200%; }
+}
+
+/* ─── Pricing card: mouse spotlight ─────────────────────────────────── */
+.pricing-spotlight {
+  --mx: -200px;
+  --my: -200px;
+}
+.pricing-spotlight::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    260px circle at var(--mx) var(--my),
+    rgba(255, 200, 1, 0.07),
+    transparent 60%
+  );
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity 200ms ease;
+}
+.pricing-spotlight > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── Bento card: mouse spotlight ────────────────────────────────────── */
+.bento-spotlight {
+  --spot-x: -200px;
+  --spot-y: -200px;
+}
+.bento-spotlight::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    180px circle at var(--spot-x) var(--spot-y),
+    rgba(255, 200, 1, 0.05),
+    transparent 65%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─── Spin (for loading spinner in App.jsx Suspense fallback) ─────────── */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+.animate-spin {
+  animation: spin 800ms linear infinite;
+}
+
+/* ─── Enhanced pricing glow with animated border pulse ───────────────── */
+.pricing-glow {
+  box-shadow:
+    0 0 0 1px #FFC801,
+    0 20px 60px rgba(255, 200, 1, 0.18),
+    0 8px 24px rgba(23, 43, 54, 0.3);
+  animation: pricingPulse 3s ease-in-out infinite;
+}
+@keyframes pricingPulse {
+  0%, 100% { box-shadow: 0 0 0 1px #FFC801, 0 20px 60px rgba(255,200,1,0.18), 0 8px 24px rgba(23,43,54,0.3); }
+  50%       { box-shadow: 0 0 0 1px #FFC801, 0 24px 72px rgba(255,200,1,0.28), 0 12px 32px rgba(23,43,54,0.4); }
+}
+
+/* ─── @media prefers-reduced-motion overrides ────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .btn-shine::after,
+  .btn-shimmer,
+  .pricing-glow,
+  .animate-fade-up,
+  .animate-float,
+  .animate-float-reverse,
+  .animate-marquee,
+  .animate-pulse-glow,
+  .animate-spin-slow {
+    animation: none !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
